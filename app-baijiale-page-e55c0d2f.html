@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于百家乐 · 使用说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "Helvetica Neue", Arial, sans-serif;
+            background-color: #fafaf9;
+            color: #1e1e1e;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 720px;
+            width: 100%;
+        }
+
+        /* 标题体系 */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            line-height: 1.25;
+            margin-bottom: 0.3rem;
+            color: #111;
+            border-left: 4px solid #9c8b7a;
+            padding-left: 1.2rem;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #6b5f54;
+            margin-bottom: 2.5rem;
+            padding-left: 1.2rem;
+            border-left: 4px solid #d9d0c7;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 2.2rem 0 1rem 0;
+            color: #292522;
+            border-bottom: 1px solid #e5ddd6;
+            padding-bottom: 0.4rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 1.5rem 0 0.6rem 0;
+            color: #443e38;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 0.98rem;
+        }
+
+        a {
+            color: #5c4b3b;
+            text-decoration: none;
+            border-bottom: 1px solid #cbbdb0;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        a:hover {
+            color: #2b221c;
+            border-bottom-color: #8a7766;
+        }
+
+        /* 卡片摘要区 */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin: 2rem 0 1.5rem 0;
+        }
+
+        .summary-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 1.3rem 1.2rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #efebe7;
+        }
+
+        .summary-card .card-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #9b8a7b;
+            margin-bottom: 0.45rem;
+        }
+
+        .summary-card .card-value {
+            font-size: 1rem;
+            font-weight: 450;
+            color: #1f1b17;
+            line-height: 1.5;
+        }
+
+        .summary-card .card-value cite {
+            font-style: normal;
+            background: #f3ede7;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+
+        /* 特点列表 */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 1.5rem 0;
+        }
+
+        .feature-list li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #eee9e3;
+            display: flex;
+            gap: 0.7rem;
+            align-items: flex-start;
+        }
+
+        .feature-list li::before {
+            content: "·";
+            color: #9c8b7a;
+            font-weight: 600;
+            font-size: 1.3rem;
+            line-height: 1.4;
+        }
+
+        /* 使用建议 - 简洁编号 */
+        .steps {
+            margin: 1rem 0 1.8rem 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .steps li {
+            counter-increment: step-counter;
+            margin-bottom: 0.9rem;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+            font-size: 0.96rem;
+        }
+
+        .steps {
+            counter-reset: step-counter;
+        }
+
+        .steps li::before {
+            content: counter(step-counter);
+            background: #e4dbd2;
+            color: #2c2621;
+            font-size: 0.75rem;
+            font-weight: 500;
+            width: 1.4rem;
+            height: 1.4rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+        }
+
+        /* 提示框 */
+        .note-box {
+            background: #f5f1ec;
+            border-left: 3px solid #b7a89b;
+            padding: 1.2rem 1.4rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1.8rem 0;
+            font-size: 0.92rem;
+            color: #3c3530;
+        }
+
+        .note-box strong {
+            font-weight: 600;
+            color: #2b231e;
+        }
+
+        /* FAQ 摘要 */
+        .faq-item {
+            margin-bottom: 1rem;
+            padding: 0.9rem 1rem;
+            background: #ffffff;
+            border-radius: 6px;
+            border: 1px solid #ede8e2;
+        }
+
+        .faq-item .faq-q {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: #2f2a25;
+        }
+
+        .faq-item .faq-a {
+            font-size: 0.92rem;
+            color: #4f473f;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e5ddd6;
+            margin: 2rem 0 1.2rem;
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: #7f7165;
+            text-align: center;
+            padding: 1.5rem 0 0.5rem;
+            border-top: 1px solid #ede6df;
+            margin-top: 2.5rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            body { padding: 1.2rem; }
+            h1 { font-size: 1.8rem; padding-left: 1rem; }
+            .subhead { padding-left: 1rem; }
+            .summary-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>百家乐 · 产品说明</h1>
+        <div class="subhead">规则清晰 · 节奏简明 · 面向理性参与者</div>
+
+        <!-- 摘要卡片 -->
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="card-label">核心玩法</div>
+                <div class="card-value">庄、闲、和 —— 三选一，比点数，不涉及复杂组合。</div>
+            </div>
+            <div class="summary-card">
+                <div class="card-label">牌局节奏</div>
+                <div class="card-value">每局约 30–60 秒，适合碎片时段，也适合连贯思考。</div>
+            </div>
+            <div class="summary-card">
+                <div class="card-label">适用场景</div>
+                <div class="card-value">熟悉规则、观察走势、短期娱乐，不建议长期连续博弈。</div>
+            </div>
+        </div>
+
+        <!-- 介绍 -->
+        <h2>为什么是百家乐</h2>
+        <p>在牌桌游戏中，<a href="https://app--baijiale.com">百家乐</a> 因其规则的对称性和直观性被许多人所知。它不需要复杂的记牌或心理博弈，每局结果仅由荷官派发的点数决定。这种简化反而让参与者更容易将注意力集中在节奏控制和资金安排上，而不是被繁复的选择消耗精力。</p>
+        <p>从结构上看，百家乐是一种低决策密度的游戏——你只需要在开局前做出选择，之后便交由牌例执行。这种「做一次选择，看全程展开」的特性，使它在快节奏与冷静观察之间找到了独特的平衡点。</p>
+
+        <!-- 特点 -->
+        <h2>几个值得留意的特点</h2>
+        <ul class="feature-list">
+            <li><strong>对称但不对等：</strong>庄与闲的抽水规则不同（庄赢抽 5%），这会影响长期期望值，但单局差异极小。</li>
+            <li><strong>和局的概率：</strong>约 9.5% 的局会出现和局，赔率通常为 8 赔 1 或 9 赔 1，需注意其出现频率并不算高。</li>
+            <li><strong>路单与走势：</strong>许多参与者喜欢记录「珠盘路」「大路」等走势图，这更多是一种视觉化辅助，而非预测工具。</li>
+            <li><strong>无记牌优势：</strong>每局使用 6–8 副牌，洗牌后随机性足够高，不存在可靠的下注模式。</li>
+        </ul>
+
+        <!-- 使用建议 -->
+        <h2>使用建议 · 三个基本方向</h2>
+        <ol class="steps">
+            <li><strong>先理解规则与赔率：</strong>在参与前，确认自己清楚庄、闲、和的赔付方式以及抽水比例。不要凭感觉下注。</li>
+            <li><strong>设定时间与金额边界：</strong>无论输赢，提前决定好最多玩多久、最多投入多少。不因连续结果而轻易改变界限。</li>
+            <li><strong>把百家乐当作一种观察练习：</strong>试着记录自己的选择与结果之间的关系，而不是试图战胜系统。这是一种数据积累，不是必胜策略。</li>
+        </ol>
+
+        <!-- 场景描述 -->
+        <h2>常见参与场景</h2>
+        <p>有些人习惯在午休间隙看几局，也有人喜欢晚间安静时打开 <a href="https://app--baijiale.com">百家乐</a> 界面，边看路单边复盘。由于每局耗时很短，它适合作为「短间隔切换」的选项——等待咖啡、通勤空档、或者其他需要短暂放松的时刻。但不建议在情绪波动或疲劳时使用，也不应追求每局都参与。</p>
+
+        <!-- 提示 -->
+        <div class="note-box">
+            <strong>☝ 可信但克制的提醒：</strong>任何游戏都应以可承受的娱乐心态对待。百家乐的结果由牌靴随机决定，不存在「下一局一定会怎样」的规律。如果你发现自己开始追逐损失或延长原定时间，建议暂停并重新评估自己的参与节奏。
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <h2>常见疑问摘要</h2>
+        <div class="faq-item">
+            <div class="faq-q">问：百家乐有「必赢」下注法吗？</div>
+            <div class="faq-a">答：没有。所有基于马丁格尔或反马丁格尔等策略的系统，都无法改变每局的独立概率。它们只是改变了输赢的分布节奏，长期期望值依然为负（扣除抽水后）。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">问：看路单真的有用吗？</div>
+            <div class="faq-a">答：路单反映的是已经发生的结果，对下一局没有预测作用。但它能帮助参与者保持观察习惯，避免在连续出现某种结果时产生错觉。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">问：庄和闲哪个更值得选？</div>
+            <div class="faq-a">答：从概率看，庄的胜率略高于闲（约 45.8% vs 44.6%），但需要支付 5% 抽水。两者长期期望值非常接近，选择哪个更多取决于个人偏好和当局感觉。</div>
+        </div>
+
+        <hr>
+        <p style="font-size:0.9rem; color:#5f554b;">本文档为产品说明用途，内容基于规则常识整理，不构成任何诱导或承诺。请保持理性判断。</p>
+
+        <div class="footer-note">
+            <span>了解更多关于 </span><a href="https://app--baijiale.com" style="border-bottom:1px solid #b7a89b;">百家乐</a><span> 的规则与界面</span>
+        </div>
+    </div>
+</body>
+</html>
