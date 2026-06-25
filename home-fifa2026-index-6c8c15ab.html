@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>世界杯 · 再次回访</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #fafaf8;
+            color: #2c2b28;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* 顶部导航 */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0 1.5rem;
+            border-bottom: 1px solid #e4e2dd;
+            margin-bottom: 2.8rem;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-mark {
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: #4f4c48;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #3d3a35;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #b0a99f;
+        }
+
+        /* hero */
+        .hero {
+            margin-bottom: 3.6rem;
+        }
+
+        .hero h1 {
+            font-weight: 420;
+            font-size: 2.2rem;
+            letter-spacing: -0.01em;
+            color: #1d1b18;
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #5f5b55;
+            max-width: 580px;
+        }
+
+        .hero-meta {
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+            color: #88837b;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-meta .dot {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #c8c2b8;
+        }
+
+        /* 核心介绍 */
+        .intro {
+            margin-bottom: 3.6rem;
+        }
+
+        .intro h2 {
+            font-weight: 420;
+            font-size: 1.5rem;
+            color: #282622;
+            margin-bottom: 0.8rem;
+            border-left: 3px solid #c0b7ab;
+            padding-left: 1rem;
+        }
+
+        .intro p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #3d3a35;
+        }
+
+        .intro .highlight {
+            background: #f2efea;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+            font-style: normal;
+        }
+
+        /* 三个场景模块 — 区别卡片 */
+        .scenes {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+            margin: 3.2rem 0 3.8rem;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border: 1px solid #e6e3dd;
+            border-radius: 16px;
+            padding: 1.6rem 1.8rem 1.8rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .scene-card h3 {
+            font-weight: 430;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2b2925;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .scene-card h3 span {
+            font-weight: 320;
+            color: #a0988b;
+            font-size: 1rem;
+        }
+
+        .scene-card p {
+            color: #4f4b44;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .scene-card .tag {
+            display: inline-block;
+            margin-top: 0.8rem;
+            font-size: 0.8rem;
+            color: #8a8378;
+            background: #f3f0eb;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            letter-spacing: 0.02em;
+        }
+
+        /* 常见说明 (FAQ 摘要) */
+        .faq-section {
+            margin: 3.2rem 0 2.8rem;
+            border-top: 1px solid #e2dfd8;
+            padding-top: 2.2rem;
+        }
+
+        .faq-section h2 {
+            font-weight: 420;
+            font-size: 1.4rem;
+            color: #2b2925;
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-item .q {
+            font-weight: 440;
+            font-size: 1rem;
+            color: #332f2a;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item .a {
+            color: #5b564e;
+            font-size: 0.95rem;
+            padding-left: 0.2rem;
+        }
+
+        .faq-item .a a {
+            color: #3d3a35;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #c8c0b4;
+            transition: text-decoration-color 0.15s;
+        }
+
+        .faq-item .a a:hover {
+            text-decoration-color: #7d7366;
+        }
+
+        /* 再次收藏提示 */
+        .reminder {
+            background: #f6f4f0;
+            border-radius: 20px;
+            padding: 1.6rem 2rem;
+            margin: 1.8rem 0 2.4rem;
+            text-align: center;
+            border: 1px solid #e2ddd4;
+        }
+
+        .reminder p {
+            font-size: 1rem;
+            color: #3b3731;
+            margin-bottom: 0.6rem;
+        }
+
+        .reminder .bookmark-hint {
+            font-size: 0.9rem;
+            color: #6f6a60;
+            letter-spacing: 0.02em;
+        }
+
+        .reminder .bookmark-hint span {
+            display: inline-block;
+            background: #e1dcd2;
+            padding: 0.1rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 0 0.2rem;
+        }
+
+        /* 页脚 */
+        .footer {
+            margin-top: 3.5rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid #e6e2da;
+            font-size: 0.85rem;
+            color: #7d776d;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .footer a {
+            color: #5c554a;
+            text-decoration: none;
+            border-bottom: 1px solid #d1cbc0;
+        }
+
+        .footer a:hover {
+            border-bottom-color: #7f7566;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 540px) {
+            .page {
+                padding: 1.4rem 1.2rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .scene-card {
+                padding: 1.3rem 1.2rem 1.5rem;
+            }
+
+            .reminder {
+                padding: 1.3rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nav {
+                flex-wrap: wrap;
+                gap: 0.4rem;
+            }
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- 顶部导航 -->
+        <nav class="nav">
+            <div class="nav-mark">⚽ 回访</div>
+            <div class="nav-links">
+                <a href="#intro">介绍</a>
+                <a href="#scenes">场景</a>
+                <a href="#faq">说明</a>
+            </div>
+        </nav>
+
+        <!-- hero -->
+        <div class="hero">
+            <h1>再次回到这里<br>关于 <a href="https://home--fifa2026.com" style="text-decoration:underline;text-underline-offset:3px;text-decoration-color:#c8c0b4;color:#1d1b18;">世界杯</a> 的零散记录</h1>
+            <p>一次回访，一次收藏，也许下一次打开就是另一届赛事。页面不着急更新，但值得被记住。</p>
+            <div class="hero-meta">
+                <span>持续关注</span>
+                <span class="dot"></span>
+                <span>轻量存档</span>
+                <span class="dot"></span>
+                <span>2026 前奏</span>
+            </div>
+        </div>
+
+        <!-- 核心介绍 -->
+        <div class="intro" id="intro">
+            <h2>为什么保留这个入口</h2>
+            <p>
+                信息流里赛事链接常常沉底，而人的注意力往往只够点开一次。把 
+                <a href="https://home--fifa2026.com" style="text-decoration:underline;text-underline-offset:3px;text-decoration-color:#c8c0b4;color:#3d3a35;">世界杯</a> 
+                的地址留在手边，不是因为它每天变化，而是因为想回看的时候不必再搜索。 
+                这个页面只做一件事：<span class="highlight">提醒自己曾关注过</span>，以及未来可以随时回来。
+            </p>
+            <p>
+                几届大赛下来，收藏夹里堆满了临时链接。与其每次重新挖掘，不如固定一个熟悉的位置。  
+                没有花哨的倒计时，没有推送弹窗——只有一行地址，和一点点叙述。
+            </p>
+        </div>
+
+        <!-- 三个场景模块 -->
+        <div class="scenes" id="scenes">
+            <div class="scene-card">
+                <h3>📎 再次访问 <span>/ 重复打开</span></h3>
+                <p>当你想确认赛程、回顾分组，或者仅仅是想感受一下大赛前的氛围，直接输入熟悉的网址比翻历史记录省心。</p>
+                <div class="tag">反复回访</div>
+            </div>
+            <div class="scene-card">
+                <h3>🔖 收藏备用 <span>/ 书签角落</span></h3>
+                <p>把链接放进浏览器书签栏或笔记软件里，下次无论是朋友问起还是自己临时需要，半秒钟就能定位。</p>
+                <div class="tag">收藏即安心</div>
+            </div>
+            <div class="scene-card">
+                <h3>🔄 持续关注 <span>/ 不过期</span></h3>
+                <p>一届赛事结束，链接并不会失效。它像一道侧门，通往有关 
+                    <a href="https://home--fifa2026.com" style="text-decoration:underline;text-underline-offset:3px;text-decoration-color:#c8c0b4;color:#3d3a35;">世界杯</a> 
+                    的持续信息。偶尔点开，总有些新东西。
+                </p>
+                <div class="tag">长期有效</div>
+            </div>
+        </div>
+
+        <!-- 常见说明 (FAQ 摘要) -->
+        <div class="faq-section" id="faq">
+            <h2>一点常见说明</h2>
+
+            <div class="faq-item">
+                <div class="q">‣ 网站会经常变化吗？</div>
+                <div class="a">页面随赛事阶段更新，但不会频繁改版。适合定期回看而非每日刷新。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">‣ 链接可以直接分享吗？</div>
+                <div class="a">当然。把 <a href="https://home--fifa2026.com">世界杯</a> 这个网址发给朋友，他们也能直接访问。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">‣ 如果忘了收藏怎么办？</div>
+                <div class="a">大多数浏览器会自动记录历史，搜索“fifa2026”或“世界杯”一般都能找回。不过主动收藏还是最稳妥。</div>
+            </div>
+        </div>
+
+        <!-- 再次收藏提示 -->
+        <div class="reminder">
+            <p>📌 如果你已经关掉了这个页面</p>
+            <div class="bookmark-hint">
+                可以用浏览器书签、手机主屏幕添加，或者记在备忘录里。<span>🏷️ 世界杯</span><span>⚡ 回访</span>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            <span>世界杯 · 轻量入口</span>
+            <span>
+                <a href="https://home--fifa2026.com">世界杯</a>
+            </span>
+        </div>
+    </div>
+</body>
+</html>
