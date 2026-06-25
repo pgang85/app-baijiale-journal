@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 · 信息卡片 | 快速了解网站用途</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fde9d8 0%, #f7d9b3 50%, #fbcfa2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1.5rem;
+    }
+    .page-card {
+      max-width: 1120px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(2px);
+      border-radius: 48px;
+      box-shadow: 0 20px 40px -12px rgba(180, 100, 30, 0.25), 0 8px 24px rgba(0,0,0,0.04);
+      padding: 2.8rem 2.5rem;
+      transition: 0.2s;
+    }
+    @media (max-width: 640px) {
+      .page-card {
+        padding: 1.8rem 1.2rem;
+        border-radius: 32px;
+      }
+    }
+
+    /* 主视觉区 */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .hero-text {
+      flex: 1 1 300px;
+    }
+    .hero-text h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: #3c2415;
+      background: linear-gradient(135deg, #a44f2a, #7b3e1f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-text p {
+      margin-top: 0.8rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #4f3824;
+      max-width: 480px;
+    }
+
+    .hero-visual {
+      flex: 0 0 180px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle at 30% 30%, #f7c999, #e6a576);
+      border-radius: 40% 60% 55% 45% / 50% 40% 60% 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      font-weight: 300;
+      color: #492e1c;
+      box-shadow: 0 8px 20px rgba(160, 80, 30, 0.2);
+      transition: all 0.3s ease;
+      margin: 0 auto;
+    }
+    @media (max-width: 480px) {
+      .hero-visual {
+        width: 140px;
+        height: 140px;
+        font-size: 3.2rem;
+      }
+    }
+
+    /* 信息卡片网格 —— 用途卡片 */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+    .info-card {
+      background: #fffbf6;
+      border-radius: 28px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 4px 16px rgba(140, 80, 30, 0.08);
+      transition: 0.2s ease;
+      border: 1px solid rgba(235, 195, 150, 0.3);
+    }
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px -8px rgba(160, 90, 30, 0.18);
+    }
+    .info-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+      color: #4e2f1b;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .info-card p {
+      color: #5e4030;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .card-icon {
+      display: inline-block;
+      background: #eed3b6;
+      width: 40px;
+      height: 40px;
+      border-radius: 16px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: #4f3422;
+    }
+
+    /* 适合人群区块 */
+    .audience-section {
+      background: #fdf3e9;
+      border-radius: 32px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .audience-text {
+      flex: 2 1 250px;
+    }
+    .audience-text h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #3b271b;
+      margin-bottom: 0.5rem;
+    }
+    .audience-text p {
+      color: #5b3f2c;
+      line-height: 1.7;
+    }
+    .audience-tags {
+      flex: 1 1 180px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.7rem;
+      justify-content: flex-end;
+    }
+    .tag {
+      background: white;
+      border-radius: 30px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.9rem;
+      color: #4b3222;
+      box-shadow: 0 2px 6px rgba(140, 80, 20, 0.05);
+      border: 1px solid #e6cfb4;
+    }
+
+    /* 自然链接段落 */
+    .link-paragraph {
+      background: #f9efe5;
+      border-radius: 28px;
+      padding: 1.8rem 2.2rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      font-size: 1.02rem;
+      color: #3f2d1e;
+    }
+    .link-paragraph a {
+      color: #9b5f36;
+      background: transparent;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 2px solid #dbaa7a;
+      padding: 0 0.15rem;
+      transition: 0.2s;
+    }
+    .link-paragraph a:hover {
+      color: #6d3f1f;
+      border-bottom-color: #8d522b;
+      background: #f5e0cc;
+      border-radius: 6px;
+    }
+
+    /* FAQ 摘要 */
+    .faq-short {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .faq-item {
+      background: #fffbf6;
+      border-radius: 20px;
+      padding: 1rem 1.5rem;
+      border-left: 6px solid #dba272;
+    }
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      color: #422e1f;
+      margin-bottom: 0.2rem;
+    }
+    .faq-item span {
+      color: #5e4230;
+      font-size: 0.95rem;
+    }
+
+    /* 页脚 */
+    .footnote {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #795f4b;
+      border-top: 1px solid #ebd6c0;
+      padding-top: 1.5rem;
+      letter-spacing: 0.3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-card">
+    <!-- hero 主视觉 -->
+    <div class="hero">
+      <div class="hero-text">
+        <h1>世界杯 · 信息枢纽</h1>
+        <p>想快速识别这个网站能为你带来什么？从赛事动态到观赛灵感，一切围绕 <strong>世界杯</strong> 展开——没有冗余，只有清晰的指引。</p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">⚽</div>
+    </div>
+
+    <!-- 用途卡片 -->
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">📋</div>
+        <h3>赛事速览</h3>
+        <p>涵盖小组赛、淘汰赛、赛程变动与积分榜，帮你快速把握 <strong>世界杯</strong> 整体脉络，节省搜索时间。</p>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🗺️</div>
+        <h3>主办国·场馆</h3>
+        <p>了解本届 <strong>世界杯</strong> 主办城市、标志性球场与周边信息，无论是线上关注还是出行参考都实用。</p>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">📊</div>
+        <h3>数据与回顾</h3>
+        <p>历史夺冠记录、经典对阵、球员表现汇总——满足从轻量浏览到深度回味的多种需求。</p>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🔍</div>
+        <h3>导航与延伸</h3>
+        <p>页面结构经过梳理，你可以从任意卡片或段落直达相关板块，不用层层跳转。</p>
+      </div>
+    </div>
+
+    <!-- 适合人群 + 标签 -->
+    <div class="audience-section">
+      <div class="audience-text">
+        <h2>谁适合来这里？</h2>
+        <p>无论你是资深球迷，还是偶尔想了解 <strong>世界杯</strong> 热点的朋友，这里的信息层级都足够友好。</p>
+      </div>
+      <div class="audience-tags">
+        <span class="tag">🌍 球迷</span>
+        <span class="tag">📱 资讯型</span>
+        <span class="tag">📅 赛程党</span>
+        <span class="tag">🏟️ 文化向</span>
+      </div>
+    </div>
+
+    <!-- 自然链接段落 -->
+    <div class="link-paragraph">
+      <p>如果你正想找一个结构清楚、安静实用的 <strong>世界杯</strong> 信息来源，不妨直接从<a href="https://home-chinese-fifa2026.com">世界杯</a>这个入口开始浏览。页面没有复杂的弹窗或无关推荐，你将看到赛事要点、主办信息以及整理好的数据模块——一切都为让你快速找到自己关心的部分。另外，关于本届赛事的举办时间和场地变更，也已在相关卡片中作了标注。</p>
+    </div>
+    <div class="link-paragraph" style="background: #fff5ec;">
+      <p>很多访客反馈说，他们原本只想确认一场比赛的时间，结果顺便回顾了历届 <strong>世界杯</strong> 的经典进球和冠军队伍。如果你也喜欢这种自然的延伸，可以试试从<a href="https://home-chinese-fifa2026.com">世界杯</a>这个页面开始探索——没有催促，只有内容本身。</p>
+    </div>
+
+    <!-- FAQ 摘要（简短，无诱导） -->
+    <div class="faq-short">
+      <div class="faq-item">
+        <strong>❓ 这个网站主要提供什么？</strong>
+        <span>围绕 <strong>世界杯</strong> 的比赛数据、主办国信息、历史记录与观赛指引，不掺杂无关内容。</span>
+      </div>
+      <div class="faq-item">
+        <strong>❓ 信息更新频率如何？</strong>
+        <span>赛程和重要公告会跟随官方节奏进行同步，历史数据为静态整理，保持稳定可查。</span>
+      </div>
+      <div class="faq-item">
+        <strong>❓ 需要注册或下载吗？</strong>
+        <span>完全不需要，打开页面即可浏览所有公开内容，没有强制登录或附加步骤。</span>
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footnote">
+      <span>⚽ 以信息卡片呈现 · 温和简洁 · 关于世界杯的那些事</span>
+    </div>
+  </div>
+</body>
+</html>
